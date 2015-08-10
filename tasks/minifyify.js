@@ -17,6 +17,7 @@ module.exports = function (grunt) {
 			var mapExt = data.mapExt || options.mapExt || '.min.json';
 			var inputFolder = data.inputFolder || options.inputFolder;
 			var outputFolder = data.outputFolder || options.outputFolder;
+			var compressPath = data.compressPath || options.compressPath || outputFolder;
 			if (data.name) {
 				var file = {};
 				[
@@ -38,7 +39,7 @@ module.exports = function (grunt) {
 				});
 				file.add.push('./' + path.join(inputFolder, data.entryFile || data.name) + '.js');
 				file.minifyifyOptions.map = data.name + mapExt;
-				file.minifyifyOptions.compressPath = outputFolder;
+				file.minifyifyOptions.compressPath = compressPath;
 				file.dest = {
 					buildFile: path.join(outputFolder, data.name) + minifiedExt,
 					mapFile: path.join(outputFolder, data.name) + mapExt
